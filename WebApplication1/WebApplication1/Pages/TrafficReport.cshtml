@@ -1,0 +1,69 @@
+﻿@page
+@model WebApplication1.TrafficReportModel
+@{
+	ViewData["Title"] = "Traffic Report";
+}
+
+
+	<div class="text-center" style="color:white">
+
+		<p>
+			Beaverton
+		</p>
+
+		<p>
+			<SCRIPT LANGUAGE="Javascript">
+
+				// Array of day names
+				var dayNames = new Array("Sunday", "Monday", "Tuesday", "Wednesday",
+					"Thursday", "Friday", "Saturday");
+
+				// Array of month Names
+				var monthNames = new Array(
+					"January", "February", "March", "April", "May", "June", "July",
+					"August", "September", "October", "November", "December");
+
+				var now = new Date();
+				document.write(dayNames[now.getDay()] + ", " +
+					monthNames[now.getMonth()] + " " +
+					now.getDate());
+
+				var currentTime = new Date().getHours();
+				if (7 <= currentTime && currentTime < 20) {
+					if (document.body) {
+						document.body.style.backgroundColor = 'rgb(0, 149, 255)';
+					}
+				}
+				else {
+					if (document.body) {
+						document.body.style.backgroundColor = 'rgb(0, 55, 143)';
+					}
+				}
+
+			</SCRIPT>
+		</p>
+	</div>
+
+	<div class="text-center" style="color: white">
+		<p>Last Updated: <span id="datetime"></span></p>
+
+		<script>
+
+			var dt = new Date();
+			document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
+
+		</script>
+	</div>
+
+	<body>
+		<div ="text-center" style="color:white">
+			@foreach (var x in @Model.trafficResponse.TRAFFIC_ITEMS.TRAFFIC_ITEM)
+		{
+			<p>
+				Traffic Item description: @x.TRAFFIC_ITEM_TYPE_DESC.ToLower(), Start Time: @x.START_TIME, End Time : @x.END_TIME,
+				Description: @x.TRAFFIC_ITEM_DESCRIPTION.FirstOrDefault().value
+			</p>
+		}
+
+		</div>
+	</body>

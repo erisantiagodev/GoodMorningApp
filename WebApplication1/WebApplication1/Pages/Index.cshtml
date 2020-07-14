@@ -1,0 +1,67 @@
+﻿@page
+@model WebApplication1.Pages.IndexModel
+@{
+	ViewData["Title"] = "Home page";
+}
+
+
+
+<body>
+
+	<div class="text-center" style="color:white">
+
+		<p>
+			Beaverton
+		</p>
+
+		<p>
+			<SCRIPT LANGUAGE="Javascript">
+
+				// Array of day names
+				var dayNames = new Array("Sunday", "Monday", "Tuesday", "Wednesday",
+					"Thursday", "Friday", "Saturday");
+
+				// Array of month Names
+				var monthNames = new Array(
+					"January", "February", "March", "April", "May", "June", "July",
+					"August", "September", "October", "November", "December");
+
+				var now = new Date();
+				document.write(dayNames[now.getDay()] + ", " +
+					monthNames[now.getMonth()] + " " +
+					now.getDate());
+
+				var currentTime = new Date().getHours();
+				if (7 <= currentTime && currentTime < 20) {
+					if (document.body) {
+						document.body.style.backgroundColor = 'rgb(0, 149, 255)';
+					}
+				}
+				else {
+					if (document.body) {
+						document.body.style.backgroundColor = 'rgb(0, 55, 143)';
+					}
+				}
+
+			</SCRIPT>
+		</p>
+	</div>
+
+	<div class="text-center" style="color:white">
+		<h1><img src="http://openweathermap.org/img/wn/@Model.weatherResponse.current.weather.FirstOrDefault().icon@@2x.png" /> @Model.weatherResponse.current.temp°</h1>
+		<p>
+			@Model.weatherResponse.daily.FirstOrDefault().temp.max°/@Model.weatherResponse.daily.FirstOrDefault().temp.min° Feels like @Model.weatherResponse.current.feels_like°
+		<p> @Model.weatherResponse.current.weather.FirstOrDefault().description</p>
+		<br />
+		Clouds : @Model.weatherResponse.current.clouds%
+		<br />
+		Humidity : @Model.weatherResponse.current.humidity%
+		<br />
+		Wind Speed: @Model.weatherResponse.current.wind_speed mph
+		<br />
+		Visibility: @Model.weatherResponse.current.visibility  m
+		</p>
+
+		<br />
+	</div>
+</body>
