@@ -11,12 +11,8 @@ namespace WebApplication1.Models
 {
     public class APIWrapper
     {
-        //optional api call// http://api.openweathermap.org/data/2.5/weather?lat=45.4889&lon=-122.8014&exclude=minutely,hourly&units=imperial&appid=8837cf36ec3e1b3c0b8c780d25da38e5 //
-
-        //8837cf36ec3e1b3c0b8c780d25da38e5//
-        public string weatherKey = "8837cf36ec3e1b3c0b8c780d25da38e5";
-        //CeQNMNtDuai958OWb2wC5ctwjJ6BBM9Jr39c_V_w0ZY//
-        public string trafficKey = "CeQNMNtDuai958OWb2wC5ctwjJ6BBM9Jr39c_V_w0ZY";
+        public string weatherKey = "";
+        public string trafficKey = "";
         public string weatherUrl { get; set; }
         public string trafficUrl { get; set; }
 
